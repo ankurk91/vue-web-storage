@@ -69,4 +69,5 @@ composer.phar
 *.tgz
 /docs/
 /dist/
+/coverage
 
