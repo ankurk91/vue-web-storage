@@ -6,8 +6,13 @@ class Storage {
   }
 
   set(key, value) {
-    let newValue = JSON.stringify(value);
-    return this.storage.setItem(this.prefix + key, newValue);
+    try {
+      this.storage.setItem(this.prefix + key, JSON.stringify(value));
+      return true;
+    } catch (e) /*istanbul ignore next*/ {
+      console.error(e);
+      return false;
+    }
   }
 
   get(key) {
@@ -15,7 +20,8 @@ class Storage {
     try {
       return JSON.parse(value);
     }
-    catch (e) {
+    catch (e)  /*istanbul ignore next*/ {
+      console.error(e);
       return null
     }
   }
@@ -31,8 +37,8 @@ class Storage {
   }
 
   keys(withPrefix = false) {
-    let keys = [];
-    let fullKeyName, newKeyName;
+    const keys = [];
+    let fullKeyName;
     let i = 0;
     let storageLength = this.storage.length;
     // Loop through all storage keys
@@ -41,8 +47,7 @@ class Storage {
       // Check if key has prefix
       /* istanbul ignore else */
       if (fullKeyName.substr(0, this.prefix.length) === this.prefix) {
-        newKeyName = withPrefix ? fullKeyName : fullKeyName.slice(this.prefix.length);
-        keys.push(newKeyName);
+        keys.push(withPrefix ? fullKeyName : fullKeyName.slice(this.prefix.length));
       }
     }
     return keys;
