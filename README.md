@@ -31,7 +31,7 @@ import Storage from 'vue-web-storage';
 Vue.use(Storage);  
 ```
 
-## Configuration
+## Configuration (optional)
 ```js
 Vue.use(Storage, {
   prefix: 'your_app_name',// default `app_`
@@ -40,7 +40,10 @@ Vue.use(Storage, {
 ```
 
 ### Methods
+All methods takes care of `prefix` in key name, so you no need to specify key prefix when using them.
+
 #### `set(key,value)`
+Stores the `value` under specified `key` in storage. Convert value to JSON before saving.
 ```js
 Vue.$storage.set('name', 'john')
 Vue.$storage.set('isAdmin', true)
@@ -48,26 +51,32 @@ Vue.$storage.set('roles', ['admin', 'sub-admin'])
 Vue.$storage.set('permission', {id: 2, slug: 'edit_post'})
 ```
 #### `get(key)`
+Retrieves given `key` value from storage, parse the value from JSON before returning.
 ```js
 Vue.$storage.get('name')
 ```
 #### `remove(key)`
+Removes the `key` from storage. 
 ```js
 Vue.$storage.remove('name')
 ```
 #### `clear()`
+Removes all keys from storage.
 ```js
 Vue.$storage.clear()
 ```
 #### `keys(withPrefix)`
+Returns array of keys stored in storage.
 ```js
 Vue.$storage.keys()
 ```
 #### `hasKey(key)`
+Returns `true` if key exists in storage regardless of its value.
 ```js
 Vue.$storage.hasKey('name')
 ```
 #### `length()`
+Returns the number of keys stored in storage.
 ```js
 Vue.$storage.length()
 ```
