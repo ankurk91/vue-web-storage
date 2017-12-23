@@ -3,7 +3,7 @@ import Storage from './storage';
 const Plugin = (Vue, params = {}) => {
 
   let options = Object.assign({}, {
-    driver: 'session',
+    driver: 'local',
     prefix: 'app_'
   }, params);
 
