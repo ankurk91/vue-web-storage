@@ -4,6 +4,10 @@
   "description": "Vue.js v2.x plugin for localStorage and sessionStorage",
   "main": "dist/vue-web-storage.js",
   "unpkg": "dist/vue-web-storage.min.js",
+  "files": [
+    "src",
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ankurk91/vue-web-storage.git"
@@ -55,7 +59,8 @@
       "vue"
     ],
     "setupFiles": [
-      "jest-localstorage-mock"
+      "jest-localstorage-mock",
+      "<rootDir>/__test__/setup.js"
     ],
     "transform": {
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest"

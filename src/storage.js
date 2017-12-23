@@ -1,13 +1,19 @@
+import {parseJSON} from "./util";
+
 class Storage {
 
-  constructor({prefix, driver}) {
+  constructor(prefix = 'app_', driver = 'local') {
     this.prefix = prefix;
     this.storage = window[`${driver}Storage`];
   }
 
+  prefixKey(key) {
+    return this.prefix + String(key)
+  }
+
   set(key, value) {
     try {
-      this.storage.setItem(this.prefix + key, JSON.stringify(value));
+      this.storage.setItem(this.prefixKey(key), JSON.stringify(value));
       return true;
     } catch (e) /*istanbul ignore next*/ {
       console.error(e);
@@ -16,18 +22,11 @@ class Storage {
   }
 
   get(key) {
-    let value = this.storage.getItem(this.prefix + key);
-    try {
-      return JSON.parse(value);
-    }
-    catch (e)  /*istanbul ignore next*/ {
-      console.error(e);
-      return value
-    }
+    return parseJSON(this.storage.getItem(this.prefixKey(key)));
   }
 
   remove(key) {
-    return this.storage.removeItem(this.prefix + key);
+    return this.storage.removeItem(this.prefixKey(key));
   }
 
   clear(force = false) {
@@ -42,11 +41,10 @@ class Storage {
 
   keys(withPrefix = false) {
     const keys = [];
-    let fullKeyName;
-    let i = 0;
+    let fullKeyName, i;
     let storageLength = this.storage.length;
     // Loop through all storage keys
-    for (i; i < storageLength; i++) {
+    for (i = 0; i < storageLength; i++) {
       fullKeyName = this.storage.key(i);
       // Check if key has prefix
       /* istanbul ignore else */

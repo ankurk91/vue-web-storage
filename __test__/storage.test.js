@@ -5,14 +5,14 @@ describe('Storage class', () => {
   let ls;
 
   beforeEach(() => {
-    ls = new Storage({
-      prefix: 'app_',
-      driver: 'local'
-    });
+    ls = new Storage(
+      'app_',
+      'local'
+    );
   });
 
   afterEach(() => {
-    ls.clear();
+    ls.clear(true);
   });
 
   test('accepts prefix', () => {

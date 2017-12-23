@@ -13,6 +13,15 @@ describe('Vue Storage plugin', () => {
     expect(Vue.$storage).toBeInstanceOf(Storage);
   });
 
+  test('Vue.$storage methods', () => {
+    Vue.use(VueWebStorage);
+
+    expect(Vue.$storage.set).toBeDefined();
+    expect(Vue.$storage.get).toBeDefined();
+    expect(Vue.$storage.on).toBeDefined();
+    expect(Vue.$storage.off).toBeDefined();
+  });
+
   test('localVue.$storage', () => {
     let localVue = Vue.extend();
     localVue.use(VueWebStorage);
@@ -22,7 +31,9 @@ describe('Vue Storage plugin', () => {
 
   test('parameters', () => {
     let localVue = Vue.extend();
-    localVue.use(VueWebStorage, {prefix: 'vue_'});
+    localVue.use(VueWebStorage, {
+      prefix: 'vue_'
+    });
 
     expect(localVue.$storage.prefix).toEqual('vue_');
   });

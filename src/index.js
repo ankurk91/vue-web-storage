@@ -1,13 +1,14 @@
 import Storage from './storage';
+import StorageWithEvents from './storage-with-events';
 
 const Plugin = (Vue, params = {}) => {
 
   let options = Object.assign({}, {
+    prefix: 'app_',
     driver: 'local',
-    prefix: 'app_'
   }, params);
 
-  let instance = new Storage(options);
+  let instance = new StorageWithEvents(options.prefix, options.driver);
   Vue.$storage = instance;
 
   Object.defineProperties(Vue.prototype, {
@@ -22,4 +23,4 @@ const Plugin = (Vue, params = {}) => {
 
 
 export default Plugin;
-export {Storage, Plugin}
+export {Storage, StorageWithEvents, Plugin}

@@ -14,6 +14,7 @@ A minimalistic Vue.js v2.x plugin for web storage
 * Choose either `localStorage` or `sessionStorage`
 * Prefix all of your stored keys
 * Auto `JSON.stringify` and `JSON.parse`
+* Events for cross tab communication
 
 ## Installation
 ```bash
@@ -83,17 +84,40 @@ Returns the number of keys stored in storage.
 Vue.$storage.length()
 ```
 
+### Events
+* These are not regular Vue.js events, these [events](https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent) to be used for cross tab communication.
+
+#### `on(key,fn)`
+Attaches a listener method to the given key. You can attach multiple methods on the same key.
+```js
+const onChangeName = (newValue, OldValue, url) => {
+  // do something when `name` value gets changed
+};
+Vue.$storage.on('name', onChangeName);
+Vue.$storage.on('name', this.anotherMethod)
+```
+#### `off(key,fn)`
+Removes specified listener method form the given key.
+```js
+Vue.$storage.off('name', this.onChangeName)
+```
+#### `clearEvents(key?)`
+* Removes all listeners for the given key otherwise clears the listeners pool when not specified.
+```js
+Vue.$storage.clearEvents('name');
+Vue.$storage.clearEvents()
+```
+
 ## Install in non-module environments (without webpack)
-* Include required files
 ```html
 <!-- Vue js -->
 <script src="https://unpkg.com/vue@2.5/dist/vue.min.js"></script>
 <!-- Lastly add this package -->
-<script src="https://unpkg.com/vue-web-storage"></script>
-```
-* Initialize
-```js
+<script src="https://unpkg.com/vue-web-storage@2"></script>
+<!-- Init the plugin -->
+<script>
 Vue.use(VueWebStorage)
+</script>
 ```
 
 ## Testing
@@ -105,6 +129,7 @@ Vue.use(VueWebStorage)
 * [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API)
 * [Browser support status](https://caniuse.com/#feat=namevalue-storage), [Chrome](https://www.chromestatus.com/feature/5345825534246912), [Edge](https://developer.microsoft.com/en-us/microsoft-edge/platform/status/webstorage/)
 * [Web Storage Quota](https://www.html5rocks.com/en/tutorials/offline/quota-research/)
+* [Storage Event Example](https://html5demos.com/storage-events/)
 
 ## Changelog
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
