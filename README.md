@@ -8,10 +8,10 @@
 [![build-status](https://travis-ci.org/ankurk91/vue-web-storage.svg?branch=master)](https://travis-ci.org/ankurk91/vue-web-storage)
 [![codecov](https://codecov.io/gh/ankurk91/vue-web-storage/branch/master/graph/badge.svg)](https://codecov.io/gh/ankurk91/vue-web-storage)
 
-Vue.js v2.x plugin for web storage
+A minimalistic Vue.js v2.x plugin for web storage
 
 ## Features
-* Choose between `localStorage` or `sessionStorage`
+* Choose either `localStorage` or `sessionStorage`
 * Prefix all of your stored keys
 * Auto `JSON.stringify` and `JSON.parse`
 
@@ -44,6 +44,7 @@ All methods takes care of `prefix` in key name, so you no need to specify key pr
 
 #### `set(key,value)`
 Stores the `value` under specified `key` in storage. Convert value to JSON before saving.
+Returns `true` on success and `false` on errors.
 ```js
 Vue.$storage.set('name', 'john')
 Vue.$storage.set('isAdmin', true)
@@ -52,6 +53,7 @@ Vue.$storage.set('permission', {id: 2, slug: 'edit_post'})
 ```
 #### `get(key)`
 Retrieves given `key` value from storage, parse the value from JSON before returning.
+If failed to parse then returns the actual value returned from storage.
 ```js
 Vue.$storage.get('name')
 ```
@@ -103,6 +105,9 @@ Vue.use(VueWebStorage)
 * [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API)
 * [Browser support status](https://caniuse.com/#feat=namevalue-storage), [Chrome](https://www.chromestatus.com/feature/5345825534246912), [Edge](https://developer.microsoft.com/en-us/microsoft-edge/platform/status/webstorage/)
 * [Web Storage Quota](https://www.html5rocks.com/en/tutorials/offline/quota-research/)
+
+## Changelog
+Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
 
 ## License
 [MIT](LICENSE.txt) License
