@@ -10,14 +10,14 @@ describe('Vue Storage plugin', () => {
   test('Vue.$storage', () => {
     Vue.use(VueWebStorage);
 
-    expect(Vue.$storage instanceof Storage).toBe(true);
+    expect(Vue.$storage).toBeInstanceOf(Storage);
   });
 
   test('localVue.$storage', () => {
     let localVue = Vue.extend();
     localVue.use(VueWebStorage);
 
-    expect(localVue.$storage instanceof Storage).toBe(true);
+    expect(localVue.$storage).toBeInstanceOf(Storage);
   });
 
   test('parameters', () => {

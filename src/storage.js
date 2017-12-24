@@ -22,7 +22,7 @@ class Storage {
     }
     catch (e)  /*istanbul ignore next*/ {
       console.error(e);
-      return null
+      return value
     }
   }
 

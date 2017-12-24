@@ -16,7 +16,7 @@ describe('Storage class', () => {
   });
 
   test('accepts prefix', () => {
-    expect(ls.prefix).toBe('app_');
+    expect(ls.prefix).toEqual('app_');
   });
 
   test('can store strings', () => {
@@ -107,6 +107,16 @@ describe('Storage class', () => {
 
     expect(ls.hasKey('name')).toBe(true);
     expect(ls.hasKey('unknown')).toBe(false)
+  });
+
+  test('returns stored value when fail to parse', () => {
+    let value = 'was_stored_by_other_means';
+    window.localStorage.setItem(ls.prefix + 'alien', value);
+    let spy = jest.spyOn(console, 'error');
+
+    expect(ls.get('alien')).toEqual(value);
+    expect(spy).toHaveBeenCalled();
+    spy.mockReset();
   });
 
 });
