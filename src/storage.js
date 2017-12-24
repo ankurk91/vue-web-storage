@@ -47,7 +47,7 @@ class Storage {
       // Check if key has prefix
       /* istanbul ignore else */
       if (fullKeyName.substr(0, this.prefix.length) === this.prefix) {
-        keys.push(withPrefix ? fullKeyName : fullKeyName.slice(this.prefix.length));
+        keys.push(withPrefix ? fullKeyName : fullKeyName.substring(this.prefix.length));
       }
     }
     return keys;
