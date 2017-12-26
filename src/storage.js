@@ -2,7 +2,7 @@ class Storage {
 
   constructor({prefix, driver}) {
     this.prefix = prefix;
-    this.storage = window[driver + 'Storage'];
+    this.storage = window[`${driver}Storage`];
   }
 
   set(key, value) {
@@ -30,10 +30,14 @@ class Storage {
     return this.storage.removeItem(this.prefix + key);
   }
 
-  clear() {
-    this.keys(true).forEach((key) => {
-      this.storage.removeItem(key);
-    });
+  clear(force = false) {
+    if (force) {
+      this.storage.clear();
+    } else {
+      this.keys(true).map((key) => {
+        this.storage.removeItem(key);
+      });
+    }
   }
 
   keys(withPrefix = false) {

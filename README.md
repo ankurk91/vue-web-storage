@@ -53,7 +53,7 @@ Vue.$storage.set('permission', {id: 2, slug: 'edit_post'})
 ```
 #### `get(key)`
 Retrieves given `key` value from storage, parse the value from JSON before returning.
-If failed to parse then returns the actual value returned from storage.
+If parsing failed then returns the actual value get from storage.
 ```js
 Vue.$storage.get('name')
 ```
@@ -62,13 +62,13 @@ Removes the `key` from storage.
 ```js
 Vue.$storage.remove('name')
 ```
-#### `clear()`
-Removes all keys from storage.
+#### `clear(force = false)`
+Removes all keys from storage. Passing `true` will clear whole storage without taking `prefix` into consideration.
 ```js
 Vue.$storage.clear()
 ```
-#### `keys(withPrefix)`
-Returns array of keys stored in storage.
+#### `keys(withPrefix = false)`
+Returns array of keys stored in storage. Passing `true` will return prefixed key names.
 ```js
 Vue.$storage.keys()
 ```
