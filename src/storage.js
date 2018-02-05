@@ -41,17 +41,15 @@ class Storage {
 
   keys(withPrefix = false) {
     const keys = [];
-    let fullKeyName, i;
-    let storageLength = this.storage.length;
+
     // Loop through all storage keys
-    for (i = 0; i < storageLength; i++) {
-      fullKeyName = this.storage.key(i);
-      // Check if key has prefix
+    Object.keys(this.storage).forEach((keyName, index) => {
       /* istanbul ignore else */
-      if (fullKeyName.substr(0, this.prefix.length) === this.prefix) {
-        keys.push(withPrefix ? fullKeyName : fullKeyName.substring(this.prefix.length));
+      if (keyName.substr(0, this.prefix.length) === this.prefix) {
+        keys.push(withPrefix ? keyName : keyName.substring(this.prefix.length));
       }
-    }
+    });
+
     return keys;
   }
 
