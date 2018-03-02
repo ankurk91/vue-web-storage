@@ -1,6 +1,6 @@
 {
   "name": "vue-web-storage",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Vue.js v2.x plugin for localStorage and sessionStorage",
   "main": "dist/vue-web-storage.js",
   "unpkg": "dist/vue-web-storage.min.js",
