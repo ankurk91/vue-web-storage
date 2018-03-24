@@ -18,13 +18,17 @@ module.exports = {
     extensions: ['.js', '.json', '.vue']
   },
   entry: './src/index.js',
-  // Don't include them into library build
-  externals: [
-    'vue',
-  ],
+  externals: {
+    'vue': {
+      commonjs: 'vue',
+      commonjs2: 'vue',
+      amd: 'vue',
+      root: 'Vue'
+    },
+  },
   output: {
-    path: path.resolve(__dirname, 'dist'),// where to store build files
-    filename: 'vue-web-storage.min.js', // build file name
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'vue-web-storage.min.js',
     library: 'VueWebStorage',
     libraryTarget: 'umd',
     libraryExport: 'default',
