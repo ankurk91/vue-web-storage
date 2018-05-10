@@ -1,5 +1,5 @@
 import Storage from './storage';
-import StorageWithEvents from './storage-with-events';
+import StorageWithEvents from './storageWithEvents';
 
 const Plugin = (Vue, params = {}) => {
 

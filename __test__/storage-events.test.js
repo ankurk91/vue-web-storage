@@ -1,4 +1,4 @@
-import StorageWithEvents from '../src/storage-with-events';
+import StorageWithEvents from '../src/storageWithEvents';
 
 // js-dom does not support `StorageEvent`
 const mockStorageEvent = (key) => {
