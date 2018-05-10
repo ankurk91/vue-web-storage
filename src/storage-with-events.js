@@ -9,16 +9,19 @@ class StorageWithEvents extends Storage {
   }
 
   on(key, fn) {
-    this.events.on(this.prefixKey(key), fn)
+    this.events.on(this.prefixKey(key), fn);
+    return this;
   }
 
   off(key, fn) {
-    this.events.off(this.prefixKey(key), fn)
+    this.events.off(this.prefixKey(key), fn);
+    return this;
   }
 
   clearEvents(key) {
     let mayBeKey = key ? this.prefixKey(key) : false;
-    this.events.clear(mayBeKey)
+    this.events.clear(mayBeKey);
+    return this;
   }
 }
 
