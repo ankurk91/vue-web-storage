@@ -27,7 +27,7 @@
   "scripts": {
     "test": "node ./node_modules/jest/bin/jest.js",
     "test:watch": "npm run test -- --watch --onlyChanged --notify",
-    "build": "node ./node_modules/webpack/bin/webpack.js --hide-modules -p --progress",
+    "build": "node ./node_modules/webpack/bin/webpack.js -p --progress",
     "prepublishOnly": "npm run test && npm run build"
   },
   "devDependencies": {
@@ -46,10 +46,6 @@
   "peerDependencies": {
     "vue": "^2.0.0"
   },
-  "engines": {
-    "node": ">= 4.2.0",
-    "npm": ">= 3.0.0"
-  },
   "jest": {
     "moduleFileExtensions": [
       "js",
@@ -66,5 +62,9 @@
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
     },
     "collectCoverage": true
+  },
+  "engines": {
+    "node": ">=6.9.0",
+    "npm": ">=3.10.0"
   }
 }

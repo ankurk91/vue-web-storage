@@ -9,7 +9,6 @@ module.exports = {
   context: __dirname,
   resolve: {
     modules: [
-      path.resolve(__dirname, 'src'),
       path.resolve(__dirname, 'node_modules'),
     ],
     alias: {
@@ -51,5 +50,8 @@ module.exports = {
   devtool: false,
   performance: {
     hints: false,
-  }
+  },
+  stats: {
+    modules: false,
+  },
 };
