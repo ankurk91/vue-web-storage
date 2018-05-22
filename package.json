@@ -27,7 +27,7 @@
   "scripts": {
     "test": "node ./node_modules/jest/bin/jest.js",
     "test:watch": "npm run test -- --watch --onlyChanged --notify",
-    "build": "node ./node_modules/webpack/bin/webpack.js -p --progress",
+    "build": "cross-env NODE_ENV=production node ./node_modules/webpack-command/lib/cli.js --mode production",
     "prepublishOnly": "npm run test && npm run build"
   },
   "devDependencies": {
@@ -37,11 +37,13 @@
     "babel-plugin-transform-object-assign": "^6.22.0",
     "babel-preset-env": "^1.6.0",
     "clean-webpack-plugin": "^0.1.18",
+    "cross-env": "^5.1.5",
     "jest": "^22.1.4",
     "jest-localstorage-mock": "^2.2.0",
-    "unminified-webpack-plugin": "^1.4.2",
+    "unminified-webpack-plugin": "^2.0.0",
     "vue": "^2.5.13",
-    "webpack": "^3.10.0"
+    "webpack": "^4.8.3",
+    "webpack-command": "^0.2.0"
   },
   "peerDependencies": {
     "vue": "^2.0.0"
