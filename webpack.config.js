@@ -46,7 +46,6 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(['./dist']),
     new UnminifiedWebpackPlugin(),
-    new webpack.optimize.ModuleConcatenationPlugin(),
     new UglifyJsPlugin({
       sourceMap: false,
       uglifyOptions: {
