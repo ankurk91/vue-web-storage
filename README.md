@@ -1,4 +1,4 @@
-# Vue-web-storage
+# Vue Web Storage
 
 [![vue-js](https://img.shields.io/badge/vue.js-2.x-brightgreen.svg?maxAge=604800)](https://vuejs.org/)
 [![downloads](https://img.shields.io/npm/dt/vue-web-storage.svg)](http://npm-stats.com/~packages/vue-web-storage)
@@ -111,9 +111,9 @@ Vue.$storage.clearEvents()
 ## Install in non-module environments (without webpack)
 ```html
 <!-- Vue js -->
-<script src="https://unpkg.com/vue@2.5/dist/vue.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5"></script>
 <!-- Lastly add this package -->
-<script src="https://unpkg.com/vue-web-storage@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-web-storage@2"></script>
 <!-- Init the plugin -->
 <script>
 Vue.use(VueWebStorage)
