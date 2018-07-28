@@ -10,14 +10,7 @@ const Plugin = (Vue, params = {}) => {
 
   let instance = new StorageWithEvents(options.prefix, options.driver);
   Vue.$storage = instance;
-
-  Object.defineProperties(Vue.prototype, {
-    $storage: {
-      get() {
-        return instance
-      }
-    }
-  });
+  Vue.prototype.$storage = instance;
 
 };
 
