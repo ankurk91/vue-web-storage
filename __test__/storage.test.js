@@ -110,13 +110,25 @@ describe('Storage class', () => {
   });
 
   test('returns stored value when fail to parse', () => {
-    let value = 'was_stored_by_other_means';
+    let value = 'was_stored_by_other_library_without_json_stringify';
     window.localStorage.setItem(ls.prefix + 'alien', value);
     let spy = jest.spyOn(console, 'error');
 
     expect(ls.get('alien')).toEqual(value);
     expect(spy).toHaveBeenCalled();
     spy.mockReset();
+  });
+
+  test('returns default value when key does not exists in storage', () => {
+    let value = ls.get('keyThatDoesNotExists', 'defaultValue');
+
+    expect(value).toEqual('defaultValue');
+  });
+
+  test('returns null when key does not exists in storage and default parameter not set', () => {
+    let value = ls.get('keyThatDoesNotExists');
+
+    expect(value).toEqual(null);
   });
 
 });

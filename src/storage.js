@@ -21,8 +21,12 @@ class Storage {
     }
   }
 
-  get(key) {
-    return parseJSON(this.storage.getItem(this.prefixKey(key)));
+  get(key, defaultValue = null) {
+    let storedValue = this.storage.getItem(this.prefixKey(key));
+    if (storedValue !== null) {
+      return parseJSON(storedValue)
+    }
+    return defaultValue;
   }
 
   remove(key) {

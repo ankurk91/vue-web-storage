@@ -5,10 +5,10 @@ let listeners = {};
 class Events {
 
   constructor() {
-    window.addEventListener('storage', this.onChange, false);
+    window.addEventListener('storage', this._onChange, false);
   }
 
-  onChange(event) {
+  _onChange(event) {
     // Notice: `this` refers to `window` inside this method
     let methods = listeners[event.key];
     /*istanbul ignore else*/

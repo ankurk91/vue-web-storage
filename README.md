@@ -52,23 +52,24 @@ Vue.$storage.set('isAdmin', true)
 Vue.$storage.set('roles', ['admin', 'sub-admin'])
 Vue.$storage.set('permission', {id: 2, slug: 'edit_post'})
 ```
-#### `get(key)`
+#### `get(key, ?defaultValue = null)`
 Retrieves given `key` value from storage, parse the value from JSON before returning.
 If parsing failed then returns the actual value get from storage.
 ```js
 Vue.$storage.get('name')
+Vue.$storage.get('doesNotExistsInStorage','defaultValue')
 ```
 #### `remove(key)`
 Removes the `key` from storage. 
 ```js
 Vue.$storage.remove('name')
 ```
-#### `clear(force = false)`
+#### `clear(?force = false)`
 Removes all keys from storage. Passing `true` will clear whole storage without taking `prefix` into consideration.
 ```js
 Vue.$storage.clear()
 ```
-#### `keys(withPrefix = false)`
+#### `keys(?withPrefix = false)`
 Returns array of keys stored in storage. Passing `true` will return prefixed key names.
 ```js
 Vue.$storage.keys()
@@ -101,8 +102,8 @@ Removes specified listener method form the given key.
 ```js
 Vue.$storage.off('name', this.onChangeName)
 ```
-#### `clearEvents(key?)`
-* Removes all listeners for the given key otherwise clears the listeners pool when not specified.
+#### `clearEvents(?key)`
+* Removes all listeners for the given key otherwise clears the listeners pool when key not specified.
 ```js
 Vue.$storage.clearEvents('name');
 Vue.$storage.clearEvents()
