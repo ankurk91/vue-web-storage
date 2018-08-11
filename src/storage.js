@@ -4,7 +4,7 @@ class Storage {
 
   constructor(prefix = 'app_', driver = 'local') {
     this.prefix = prefix;
-    this.storage = window[`${driver}Storage`];
+    this.storage = window[`${String(driver)}Storage`];
   }
 
   prefixKey(key) {
