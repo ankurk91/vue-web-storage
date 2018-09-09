@@ -1,5 +1,9 @@
 # Changelog
 
+## [3.0.0](https://github.com/ankurk91/vue-web-storage/compare/2.1.0...3.0.0) (breaking)
+* Add: allow multiple drivers, [#4]
+    - Read the upgrade guide, it should only take ~1 minute to restore previous behaviour
+    
 ## [2.1.0](https://github.com/ankurk91/vue-web-storage/compare/2.0.2...2.1.0) 
 * Add: defaultValue to `.get(key,defaultValue)` method
 

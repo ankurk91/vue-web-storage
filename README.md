@@ -29,15 +29,39 @@ yarn add vue-web-storage
 ```js
 import Vue from 'vue';
 import Storage from 'vue-web-storage';  
-Vue.use(Storage);  
+Vue.use(Storage); 
+// Use as
+// Vue.$localStorage
 ```
 
 ## Configuration (optional)
 ```js
+// Single driver
 Vue.use(Storage, {
   prefix: 'your_app_name',// default `app_`
   driver: 'session', // default 'local'
-})
+  name: 'sessionStorage', // default `${driver}Storage`
+});
+// Use as
+// Vue.$sessionStorage
+
+// OR
+// Multiple drivers
+Vue.use(Storage, [
+  {
+    prefix: '_app',
+    driver: 'session',
+    name: 'sessionStorage',
+  },
+  {
+    prefix: '_app',
+    driver: 'local',
+    name: 'localStorage',
+  }
+]);
+// Use as
+// Vue.$sessionStorage
+// Vue.$localStorage
 ```
 
 ### Methods
@@ -47,42 +71,42 @@ All methods takes care of `prefix` in key name, so you no need to specify key pr
 Stores the `value` under specified `key` in storage. Convert value to JSON before saving.
 Returns `true` on success and `false` on errors.
 ```js
-Vue.$storage.set('name', 'john')
-Vue.$storage.set('isAdmin', true)
-Vue.$storage.set('roles', ['admin', 'sub-admin'])
-Vue.$storage.set('permission', {id: 2, slug: 'edit_post'})
+Vue.$localStorage.set('name', 'john')
+Vue.$localStorage.set('isAdmin', true)
+Vue.$localStorage.set('roles', ['admin', 'sub-admin'])
+Vue.$localStorage.set('permission', {id: 2, slug: 'edit_post'})
 ```
 #### `get(key, ?defaultValue = null)`
 Retrieves given `key` value from storage, parse the value from JSON before returning.
 If parsing failed then returns the actual value get from storage.
 ```js
-Vue.$storage.get('name')
-Vue.$storage.get('doesNotExistsInStorage','defaultValue')
+Vue.$localStorage.get('name')
+Vue.$localStorage.get('doesNotExistsInStorage','defaultValue')
 ```
 #### `remove(key)`
 Removes the `key` from storage. 
 ```js
-Vue.$storage.remove('name')
+Vue.$localStorage.remove('name')
 ```
 #### `clear(?force = false)`
 Removes all keys from storage. Passing `true` will clear whole storage without taking `prefix` into consideration.
 ```js
-Vue.$storage.clear()
+Vue.$localStorage.clear()
 ```
 #### `keys(?withPrefix = false)`
 Returns array of keys stored in storage. Passing `true` will return prefixed key names.
 ```js
-Vue.$storage.keys()
+Vue.$localStorage.keys()
 ```
 #### `hasKey(key)`
 Returns `true` if key exists in storage regardless of its value.
 ```js
-Vue.$storage.hasKey('name')
+Vue.$localStorage.hasKey('name')
 ```
 #### `length()`
 Returns the number of keys stored in storage.
 ```js
-Vue.$storage.length()
+Vue.$localStorage.length()
 ```
 
 ### Events
@@ -94,19 +118,19 @@ Attaches a listener method to the given key. You can attach multiple methods on 
 const onChangeName = (newValue, OldValue, url) => {
   // do something when `name` value gets changed
 };
-Vue.$storage.on('name', onChangeName);
-Vue.$storage.on('name', this.anotherMethod)
+Vue.$localStorage.on('name', onChangeName);
+Vue.$localStorage.on('name', this.anotherMethod)
 ```
 #### `off(key,fn)`
 Removes specified listener method form the given key.
 ```js
-Vue.$storage.off('name', this.onChangeName)
+Vue.$localStorage.off('name', this.onChangeName)
 ```
 #### `clearEvents(?key)`
 * Removes all listeners for the given key otherwise clears the listeners pool when key not specified.
 ```js
-Vue.$storage.clearEvents('name');
-Vue.$storage.clearEvents()
+Vue.$localStorage.clearEvents('name');
+Vue.$localStorage.clearEvents()
 ```
 
 ## Install in non-module environments (without webpack)
@@ -114,7 +138,7 @@ Vue.$storage.clearEvents()
 <!-- Vue js -->
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5"></script>
 <!-- Lastly add this package -->
-<script src="https://cdn.jsdelivr.net/npm/vue-web-storage@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-web-storage@3"></script>
 <!-- Init the plugin -->
 <script>
 Vue.use(VueWebStorage)
