@@ -6,36 +6,40 @@ Vue.config.productionTip = false;
 
 describe('Vue Storage plugin', () => {
 
-
-  test('Vue.$storage', () => {
-    Vue.use(VueWebStorage);
-
-    expect(Vue.$storage).toBeInstanceOf(Storage);
-  });
-
-  test('Vue.$storage methods', () => {
-    Vue.use(VueWebStorage);
-
-    expect(Vue.$storage.set).toBeDefined();
-    expect(Vue.$storage.get).toBeDefined();
-    expect(Vue.$storage.on).toBeDefined();
-    expect(Vue.$storage.off).toBeDefined();
-  });
-
-  test('localVue.$storage', () => {
+  test('no arguments', () => {
     let localVue = Vue.extend();
     localVue.use(VueWebStorage);
 
-    expect(localVue.$storage).toBeInstanceOf(Storage);
+    expect(localVue.$localStorage.prefix).toEqual('app_');
+    expect(localVue.$localStorage.set).toBeDefined();
+    expect(localVue.$localStorage.get).toBeDefined();
+    expect(localVue.$localStorage.on).toBeDefined();
+    expect(localVue.$localStorage.off).toBeDefined();
   });
 
-  test('parameters', () => {
+  test('custom prefix with default driver', () => {
     let localVue = Vue.extend();
     localVue.use(VueWebStorage, {
       prefix: 'vue_'
     });
 
-    expect(localVue.$storage.prefix).toEqual('vue_');
+    expect(localVue.$localStorage).toBeInstanceOf(Storage);
+    expect(localVue.$localStorage.prefix).toEqual('vue_');
+  });
+
+  test('multiple drivers', () => {
+    let localVue = Vue.extend();
+    localVue.use(VueWebStorage, {
+      drivers: ['local', 'session'],
+    });
+
+    // Prefix will be same for both
+    expect(localVue.$localStorage.prefix).toEqual('app_');
+    expect(localVue.$sessionStorage.prefix).toEqual('app_');
+
+    // Both names should be registered
+    expect(localVue.$localStorage).toBeInstanceOf(Storage);
+    expect(localVue.$sessionStorage).toBeInstanceOf(Storage);
   });
 
 });
