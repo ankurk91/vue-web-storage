@@ -1,34 +1,24 @@
 import Storage from './storage';
 import StorageWithEvents from './storageWithEvents';
+import {arrayify} from "./util";
 
-const registerInstance = (Vue, params) => {
-  let instance = new StorageWithEvents(params.prefix, params.driver);
-  let apiName = '$' + String(params.name);
+const registerInstance = (Vue, driver, prefix) => {
+  let instance = new StorageWithEvents(prefix, driver);
+  let apiName = '$' + String(driver) + 'Storage';
 
   Vue[apiName] = instance;
   Vue.prototype[apiName] = instance;
 };
 
-const arrayify = (obj) => {
-  return obj instanceof Array ? obj : [obj];
-};
-
-const normalizeParams = (params) => {
-  let defaultDriver = 'local';
-  let autoName = params.driver || defaultDriver;
-
-  return Object.assign({}, {
-    prefix: 'app_',
-    driver: defaultDriver,
-    name: autoName + 'Storage',
-  }, params);
-
-};
-
 const Plugin = (Vue, options = {}) => {
 
-  arrayify(options).map((params) => {
-    registerInstance(Vue, normalizeParams(params));
+  let safeOptions = Object.assign({}, {
+    prefix: 'app_',
+    drivers: 'local'
+  }, options);
+
+  arrayify(safeOptions.drivers).map((driver) => {
+    registerInstance(Vue, driver, safeOptions.prefix);
   });
 
 };

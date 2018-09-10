@@ -6,7 +6,6 @@ Vue.config.productionTip = false;
 
 describe('Vue Storage plugin', () => {
 
-
   test('no arguments', () => {
     let localVue = Vue.extend();
     localVue.use(VueWebStorage);
@@ -18,7 +17,7 @@ describe('Vue Storage plugin', () => {
     expect(localVue.$localStorage.off).toBeDefined();
   });
 
-  test('custom prefix with default driver and auto names', () => {
+  test('custom prefix with default driver', () => {
     let localVue = Vue.extend();
     localVue.use(VueWebStorage, {
       prefix: 'vue_'
@@ -28,38 +27,11 @@ describe('Vue Storage plugin', () => {
     expect(localVue.$localStorage.prefix).toEqual('vue_');
   });
 
-  test('multiple drivers with custom names', () => {
+  test('multiple drivers', () => {
     let localVue = Vue.extend();
-    localVue.use(VueWebStorage, [
-      {
-        driver: 'local',
-        name: 'appStorage'
-      },
-      {
-        driver: 'session',
-        name: 'adminStorage'
-      }
-    ]);
-
-    // Prefix will be same for both
-    expect(localVue.$appStorage.prefix).toEqual('app_');
-    expect(localVue.$adminStorage.prefix).toEqual('app_');
-
-    // Both names should be registered
-    expect(localVue.$appStorage).toBeInstanceOf(Storage);
-    expect(localVue.$adminStorage).toBeInstanceOf(Storage);
-  });
-
-  test('multiple drivers with auto names', () => {
-    let localVue = Vue.extend();
-    localVue.use(VueWebStorage, [
-      {
-        driver: 'local',
-      },
-      {
-        driver: 'session',
-      }
-    ]);
+    localVue.use(VueWebStorage, {
+      drivers: ['local', 'session'],
+    });
 
     // Prefix will be same for both
     expect(localVue.$localStorage.prefix).toEqual('app_');

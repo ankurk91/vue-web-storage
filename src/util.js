@@ -8,4 +8,8 @@ const parseJSON = (value) => {
   }
 };
 
-export {parseJSON}
+const arrayify = (item) => {
+  return item instanceof Array ? item : [item];
+};
+
+export {parseJSON, arrayify}

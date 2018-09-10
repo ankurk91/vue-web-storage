@@ -8,10 +8,10 @@
 [![build-status](https://travis-ci.org/ankurk91/vue-web-storage.svg?branch=master)](https://travis-ci.org/ankurk91/vue-web-storage)
 [![codecov](https://codecov.io/gh/ankurk91/vue-web-storage/branch/master/graph/badge.svg)](https://codecov.io/gh/ankurk91/vue-web-storage)
 
-A minimalistic Vue.js v2.x plugin for web storage
+A minimalistic Vue.js plugin for web storage
 
 ## Features
-* Choose either `localStorage` or `sessionStorage`
+* Choose either `localStorage` or `sessionStorage` or both
 * Prefix all of your stored keys
 * Auto `JSON.stringify` and `JSON.parse`
 * Events for cross tab communication
@@ -36,30 +36,12 @@ Vue.use(Storage);
 
 ## Configuration (optional)
 ```js
-// Single driver
 Vue.use(Storage, {
-  prefix: 'your_app_name',// default `app_`
-  driver: 'session', // default 'local'
-  name: 'sessionStorage', // default `${driver}Storage`
+  prefix: 'your_app_slug_',// default `app_`
+  drivers: ['session','local'], // default 'local'
 });
-// Use as
-// Vue.$sessionStorage
 
-// OR
-// Multiple drivers
-Vue.use(Storage, [
-  {
-    prefix: '_app',
-    driver: 'session',
-    name: 'sessionStorage',
-  },
-  {
-    prefix: '_app',
-    driver: 'local',
-    name: 'localStorage',
-  }
-]);
-// Use as
+// This will register two instances
 // Vue.$sessionStorage
 // Vue.$localStorage
 ```
