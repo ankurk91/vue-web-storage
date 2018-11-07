@@ -1,4 +1,4 @@
-import {parseJSON} from "./util";
+import {parseJSON} from './util';
 
 let listeners = {};
 

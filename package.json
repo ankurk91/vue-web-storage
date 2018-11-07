@@ -26,9 +26,9 @@
   "homepage": "https://github.com/ankurk91/vue-web-storage",
   "scripts": {
     "test": "jest",
-    "test:watch": "npm run test -- --watch --onlyChanged --notify",
+    "test:watch": "yarn run test --watch --onlyChanged --notify",
     "build": "cross-env NODE_ENV=production webpack --progress --mode production",
-    "prepublishOnly": "npm run test && npm run build"
+    "prepublishOnly": "yarn run test && yarn run build"
   },
   "devDependencies": {
     "@babel/core": "^7.1.5",
