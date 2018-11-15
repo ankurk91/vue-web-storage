@@ -134,7 +134,7 @@ Vue.use(VueWebStorage)
 
 ## Resources
 * [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API)
-* [Browser support status](https://caniuse.com/#feat=namevalue-storage), [Chrome](https://www.chromestatus.com/feature/5345825534246912), [Edge](https://developer.microsoft.com/en-us/microsoft-edge/platform/status/webstorage/)
+* [Browser support status](https://caniuse.com/#feat=namevalue-storage)
 * [Web Storage Quota](https://www.html5rocks.com/en/tutorials/offline/quota-research/)
 * [Storage Event Example](https://html5demos.com/storage-events/)
 
