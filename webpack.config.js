@@ -71,5 +71,7 @@ module.exports = {
   },
   stats: {
     modules: false,
+    children: false,
+    entrypoints: false,
   },
 };
