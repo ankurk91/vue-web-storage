@@ -1,6 +1,5 @@
 # Vue Web Storage
 
-[![vue-js](https://img.shields.io/badge/vue.js-2.x-brightgreen.svg?maxAge=604800)](https://vuejs.org/)
 [![downloads](https://img.shields.io/npm/dt/vue-web-storage.svg)](http://npm-stats.com/~packages/vue-web-storage)
 [![npm-version](https://img.shields.io/npm/v/vue-web-storage.svg)](https://www.npmjs.com/package/vue-web-storage)
 [![github-tag](https://img.shields.io/github/tag/ankurk91/vue-web-storage.svg?maxAge=1800)](https://github.com/ankurk91/vue-web-storage/)
