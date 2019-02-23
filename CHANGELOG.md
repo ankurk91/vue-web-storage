@@ -1,6 +1,10 @@
 # Changelog
 
-## [3.0.0](https://github.com/ankurk91/vue-web-storage/compare/2.1.0...3.0.0) (breaking)
+## [4.0.0](https://github.com/ankurk91/vue-web-storage/compare/3.0.0...4.0.0) 
+* Add: ES6 named imports, allows you to consume package in a non Vue.js project
+    - `import { StorageWithEvents } from 'vue-web-storage'`
+    
+## [3.0.0](https://github.com/ankurk91/vue-web-storage/compare/2.1.0...3.0.0) 
 * Add: allow multiple drivers, [#4](https://github.com/ankurk91/vue-web-storage/issues/4)
     - Read the [upgrade](UPGRADING.md) guide to restore old behaviour
     
