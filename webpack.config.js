@@ -31,7 +31,6 @@ module.exports = {
     filename: 'vue-web-storage.min.js',
     library: 'VueWebStorage',
     libraryTarget: 'umd',
-    libraryExport: 'default',
     umdNamedDefine: true,
     // Workaround to fix umd build, restore webpack v3 behaviour
     // https://github.com/webpack/webpack/issues/6642
