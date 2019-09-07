@@ -1,10 +1,10 @@
 # Vue Web Storage
 
-[![downloads](https://img.shields.io/npm/dt/vue-web-storage.svg)](http://npm-stats.com/~packages/vue-web-storage)
-[![npm-version](https://img.shields.io/npm/v/vue-web-storage.svg)](https://www.npmjs.com/package/vue-web-storage)
-[![github-tag](https://img.shields.io/github/tag/ankurk91/vue-web-storage.svg?maxAge=1800)](https://github.com/ankurk91/vue-web-storage/)
-[![license](https://img.shields.io/github/license/ankurk91/vue-web-storage.svg?maxAge=1800)](https://yarnpkg.com/en/package/vue-web-storage)
-[![build-status](https://travis-ci.org/ankurk91/vue-web-storage.svg?branch=master)](https://travis-ci.org/ankurk91/vue-web-storage)
+[![downloads](https://badgen.net/npm/dt/vue-web-storage)](http://npm-stats.com/~packages/vue-web-storage)
+[![npm-version](https://badgen.net/npm/v/vue-web-storage)](https://www.npmjs.com/package/vue-web-storage)
+[![github-tag](https://badgen.net/github/tag/ankurk91/vue-web-storage)](https://github.com/ankurk91/vue-web-storage/)
+[![license](https://badgen.net/github/license/ankurk91/vue-web-storage)](https://yarnpkg.com/en/package/vue-web-storage)
+[![Build Status](https://travis-ci.com/ankurk91/vue-web-storage.svg?branch=master)](https://travis-ci.com/ankurk91/vue-web-storage)
 [![codecov](https://codecov.io/gh/ankurk91/vue-web-storage/branch/master/graph/badge.svg)](https://codecov.io/gh/ankurk91/vue-web-storage)
 
 A minimalistic Vue.js plugin for web storage
