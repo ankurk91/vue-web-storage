@@ -17,11 +17,11 @@ A minimalistic Vue.js plugin for web storage
 
 ## Installation
 ```bash
-# npm
-npm install vue-web-storage --save
-
 # Yarn
 yarn add vue-web-storage
+
+# npm
+npm install vue-web-storage --save
 ```
 
 ## Usage
