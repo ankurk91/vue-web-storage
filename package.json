@@ -4,9 +4,11 @@
   "description": "Vue.js plugin for localStorage and sessionStorage",
   "main": "dist/vue-web-storage.js",
   "browser": "dist/vue-web-storage.min.js",
+  "typings": "types/main.d.ts",
   "files": [
     "src",
-    "dist"
+    "dist",
+    "types/*.d.ts"
   ],
   "repository": {
     "type": "git",
