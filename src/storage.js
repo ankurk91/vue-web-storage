@@ -22,11 +22,10 @@ class Storage {
   }
 
   get(key, defaultValue = null) {
-    let storedValue = this.storage.getItem(this.prefixKey(key));
-    if (storedValue !== null) {
-      return parseJSON(storedValue)
-    }
-    return defaultValue;
+    const storedValue = parseJSON(
+      this.storage.getItem(this.prefixKey(key))
+    );
+    return storedValue === null ? defaultValue : storedValue;
   }
 
   remove(key) {
