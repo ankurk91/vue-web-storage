@@ -91,7 +91,7 @@ Vue.$localStorage.length()
 ```
 
 ### Events
-* These are not regular Vue.js events, these [events](https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent) to be used for cross tab communication.
+* :bulb: These are not regular Vue.js events, these [events](https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent) to be used for cross tab communication.
 
 #### `on(key,fn)`
 Attaches a listener method to the given key. You can attach multiple methods on the same key.

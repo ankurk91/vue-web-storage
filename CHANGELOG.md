@@ -1,5 +1,8 @@
 # Changelog
 
+## [4.0.2](https://github.com/ankurk91/vue-web-storage/compare/4.0.1...4.0.2)
+* Fix issue [#13](https://github.com/ankurk91/vue-web-storage/issues/13)
+
 ## [4.0.1](https://github.com/ankurk91/vue-web-storage/compare/4.0.0...4.0.1)
 * Add type definition 
 
