@@ -4,7 +4,7 @@
 [![npm-version](https://badgen.net/npm/v/vue-web-storage)](https://www.npmjs.com/package/vue-web-storage)
 [![github-tag](https://badgen.net/github/tag/ankurk91/vue-web-storage)](https://github.com/ankurk91/vue-web-storage/)
 [![license](https://badgen.net/github/license/ankurk91/vue-web-storage)](https://yarnpkg.com/en/package/vue-web-storage)
-![tests](https://github.com/ankurk91/vue-web-storage/workflows/tests/badge.svg)
+[![tests](https://github.com/ankurk91/vue-web-storage/workflows/tests/badge.svg)](https://github.com/ankurk91/vue-web-storage/actions)
 [![codecov](https://codecov.io/gh/ankurk91/vue-web-storage/branch/master/graph/badge.svg)](https://codecov.io/gh/ankurk91/vue-web-storage)
 
 A minimalistic Vue.js plugin for web storage
@@ -17,7 +17,7 @@ A minimalistic Vue.js plugin for web storage
 
 ## Installation
 ```bash
-# Yarn
+# yarn
 yarn add vue-web-storage
 
 # npm
