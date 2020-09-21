@@ -8,7 +8,7 @@
   "files": [
     "src",
     "dist",
-    "types/*.d.ts"
+    "types"
   ],
   "repository": {
     "type": "git",

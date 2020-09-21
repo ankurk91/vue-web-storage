@@ -6,6 +6,7 @@
 [![license](https://badgen.net/github/license/ankurk91/vue-web-storage)](https://yarnpkg.com/en/package/vue-web-storage)
 [![tests](https://github.com/ankurk91/vue-web-storage/workflows/tests/badge.svg)](https://github.com/ankurk91/vue-web-storage/actions)
 [![codecov](https://codecov.io/gh/ankurk91/vue-web-storage/branch/master/graph/badge.svg)](https://codecov.io/gh/ankurk91/vue-web-storage)
+![ts](https://badgen.net/badge/ready/TypeScript/blue)
 
 A minimalistic Vue.js plugin for web storage
 
@@ -21,7 +22,7 @@ A minimalistic Vue.js plugin for web storage
 yarn add vue-web-storage
 
 # npm
-npm install vue-web-storage --save
+npm install vue-web-storage
 ```
 
 ## Usage
@@ -46,7 +47,7 @@ Vue.use(Storage, {
 ```
 
 ### Methods
-All methods takes care of `prefix` in key name, so you no need to specify key prefix when using them.
+All methods take care of `prefix` in key name, so you no need to specify key prefix when using them.
 
 #### `set(key,value)`
 Stores the `value` under specified `key` in storage. Convert value to JSON before saving.

@@ -1,19 +1,19 @@
-import Vue, { Component, PluginFunction, PluginObject } from 'vue'
+import Vue, {PluginFunction, PluginObject} from 'vue'
 
 // Vue prototype augments
 import './vue'
 
-export interface VueWebStorageConfigOptions {
+export interface VueWebStoragePluginOptions {
   prefix?: string
   drivers?: []
 }
 
-export interface VueWebStoragePlugin extends PluginObject<VueWebStorageConfigOptions> {
-  install: PluginFunction<VueWebStorageConfigOptions>
+export interface VueWebStoragePlugin extends PluginObject<VueWebStoragePluginOptions> {
+  install: PluginFunction<VueWebStoragePluginOptions>
 }
 
 export interface VueWebStorageConfig extends VueWebStoragePlugin {
-  setConfig: (config: VueWebStorageConfigOptions) => void
+  setConfig: (config: VueWebStoragePluginOptions) => void
 }
 
 export declare const VueWebStorage: VueWebStorageConfig

@@ -4,7 +4,7 @@
 * Fix issue [#13](https://github.com/ankurk91/vue-web-storage/issues/13)
 
 ## [4.0.1](https://github.com/ankurk91/vue-web-storage/compare/4.0.0...4.0.1)
-* Add type definition 
+* Add type definitions 
 
 ## [4.0.0](https://github.com/ankurk91/vue-web-storage/compare/3.0.0...4.0.0) 
 * Add: ES6 named imports, allows you to consume package in a non Vue.js project
