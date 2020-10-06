@@ -1,9 +1,9 @@
-import { parseJSON } from './util';
+import {parseJSON} from './util';
 
-class WebStorage {
+class Storage {
 
   public prefix;
-  public storage: Storage | Window;
+  public storage: any;
 
   constructor(prefix = 'app_', driver = 'local') {
     this.prefix = prefix;
@@ -39,7 +39,7 @@ class WebStorage {
   }
 
   remove(key: any) {
-    if('removeItem' in this.storage){
+    if ('removeItem' in this.storage) {
       return this.storage.removeItem(this.prefixKey(key));
     }
   }
@@ -62,7 +62,7 @@ class WebStorage {
     const keys: any[] = [];
 
     // Loop through all storage keys
-    Object.keys(this.storage).forEach((keyName, index) => {
+    Object.keys(this.storage).forEach((keyName) => {
       /* istanbul ignore else */
       if (keyName.substr(0, this.prefix.length) === this.prefix) {
         keys.push(withPrefix ? keyName : keyName.substring(this.prefix.length));
@@ -81,4 +81,4 @@ class WebStorage {
   }
 }
 
-export default WebStorage
+export default Storage

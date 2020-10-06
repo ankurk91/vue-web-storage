@@ -1,4 +1,4 @@
-import Storage from '../src/web-storage';
+import Storage from '../src/storage';
 
 describe('Storage class', () => {
 
