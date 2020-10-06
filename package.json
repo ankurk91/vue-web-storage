@@ -35,9 +35,12 @@
     "prepublishOnly": "yarn run test && yarn run build"
   },
   "devDependencies": {
+    "@types/jest": "^26.0.14",
+    "@types/vue": "^2.0.0",
     "clean-webpack-plugin": "^3.0.0",
     "cross-env": "^7.0.2",
     "jest": "^26.0.1",
+    "ts-jest": "^26.4.1",
     "ts-loader": "^8.0.4",
     "typescript": "^4.0.3",
     "unminified-webpack-plugin": "^2.0.0",

@@ -43,7 +43,7 @@ class Events {
     if (key) {
       delete listeners[key];
     } else {
-      listeners.splice(0, listeners.length);
+      listeners = [];
     }
   }
 

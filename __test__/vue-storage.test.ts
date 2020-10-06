@@ -1,5 +1,6 @@
 import {Storage, Plugin as VueWebStorage} from '../src';
 // Lets import full build
+// @ts-ignore
 import Vue from 'vue/dist/vue.common';
 
 Vue.config.productionTip = false;

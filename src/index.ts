@@ -1,4 +1,4 @@
-import Storage from './web-storage';
+import Storage from './storage';
 import StorageWithEvents from './storageWithEvents';
 import { arrayify } from './util';
 

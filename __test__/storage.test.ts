@@ -2,7 +2,7 @@ import Storage from '../src/storage';
 
 describe('Storage class', () => {
 
-  let ls;
+  let ls: any;
 
   beforeEach(() => {
     ls = new Storage(

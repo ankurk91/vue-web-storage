@@ -1,9 +1,9 @@
-import Storage from './web-storage';
+import Storage from './storage';
 import Events from './events';
 
 class StorageWithEvents extends Storage {
 
-  public events: any;
+  public events: Events;
 
   constructor(prefix = 'app_', driver = 'local') {
     super(prefix, driver);
@@ -20,7 +20,7 @@ class StorageWithEvents extends Storage {
     return this;
   }
 
-  clearEvents(key: any) {
+  clearEvents(key: any = null) {
     let mayBeKey = key ? this.prefixKey(key) : false;
     this.events.clear(mayBeKey);
     return this;
