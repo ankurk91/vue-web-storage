@@ -1,7 +1,7 @@
-import Storage from './storage';
+import {WebStorage} from './web-storage';
 import Events from './events';
 
-class StorageWithEvents extends Storage {
+class StorageWithEvents extends WebStorage {
 
   constructor(prefix = 'app_', driver = 'local') {
     super(prefix, driver);

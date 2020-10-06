@@ -1,4 +1,4 @@
-import {Storage, Plugin as VueWebStorage} from '../src/index';
+import {Storage, Plugin as VueWebStorage} from '../src';
 // Lets import full build
 import Vue from 'vue/dist/vue.common';
 

@@ -1,6 +1,6 @@
-import {parseJSON} from './util';
+import { parseJSON } from './util';
 
-let listeners = {};
+let listeners: any[] = [];
 
 class Events {
 
@@ -8,7 +8,7 @@ class Events {
     window.addEventListener('storage', this._onChange, false);
   }
 
-  _onChange(event) {
+  _onChange(event: any) {
     // Notice: `this` refers to `window` inside this method
     let methods = listeners[event.key];
     /*istanbul ignore else*/
@@ -16,13 +16,13 @@ class Events {
       let newValue = parseJSON(event.newValue);
       let oldValue = parseJSON(event.oldValue);
 
-      methods.map((method) => {
+      methods.map((method: any) => {
         method.call(this, newValue, oldValue, event.url);
       });
     }
   }
 
-  on(key, fn) {
+  on(key: any, fn: any) {
     if (listeners[key]) {
       listeners[key].push(fn);
     } else {
@@ -30,7 +30,7 @@ class Events {
     }
   }
 
-  off(key, fn) {
+  off(key: any, fn: any) {
     let methods = listeners[key];
     if (methods && methods.length > 1) {
       methods.splice(methods.indexOf(fn), 1);
@@ -39,11 +39,11 @@ class Events {
     }
   }
 
-  clear(key) {
+  clear(key: any) {
     if (key) {
       delete listeners[key];
     } else {
-      listeners = {}
+      listeners.splice(0, listeners.length);
     }
   }
 

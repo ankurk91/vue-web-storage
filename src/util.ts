@@ -1,4 +1,4 @@
-const parseJSON = (value) => {
+const parseJSON = (value: string) => {
   try {
     return JSON.parse(value);
   }
@@ -8,7 +8,7 @@ const parseJSON = (value) => {
   }
 };
 
-const arrayify = (item) => {
+const arrayify = (item: any | []) => {
   return item instanceof Array ? item : [item];
 };
 

@@ -1,19 +1,25 @@
-import {parseJSON} from "./util";
+import { parseJSON } from './util';
 
-class Storage {
+class WebStorage {
+
+  public prefix;
+  public storage: Storage | Window;
 
   constructor(prefix = 'app_', driver = 'local') {
     this.prefix = prefix;
+    // @ts-ignore
     this.storage = window[`${String(driver)}Storage`];
   }
 
-  prefixKey(key) {
+  prefixKey(key: any) {
     return this.prefix + String(key)
   }
 
-  set(key, value) {
+  set(key: any, value: any) {
     try {
-      this.storage.setItem(this.prefixKey(key), JSON.stringify(value));
+      if ('setItem' in this.storage) {
+        this.storage.setItem(this.prefixKey(key), JSON.stringify(value));
+      }
       return true;
     } catch (e) /*istanbul ignore next*/ {
       console.error(e);
@@ -21,29 +27,39 @@ class Storage {
     }
   }
 
-  get(key, defaultValue = null) {
-    const storedValue = parseJSON(
-      this.storage.getItem(this.prefixKey(key))
-    );
+  get(key: any, defaultValue = null) {
+    let storedValue: null | any = null;
+    if ('getItem' in this.storage) {
+      const item = this.storage.getItem(this.prefixKey(key));
+      if (!!item) {
+        storedValue = parseJSON(item);
+      }
+    }
     return storedValue === null ? defaultValue : storedValue;
   }
 
-  remove(key) {
-    return this.storage.removeItem(this.prefixKey(key));
+  remove(key: any) {
+    if('removeItem' in this.storage){
+      return this.storage.removeItem(this.prefixKey(key));
+    }
   }
 
   clear(force = false) {
     if (force) {
-      this.storage.clear();
+      if ('clear' in this.storage) {
+        this.storage.clear();
+      }
     } else {
       this.keys(true).map((key) => {
-        this.storage.removeItem(key);
+        if ('removeItem' in this.storage) {
+          this.storage.removeItem(key);
+        }
       });
     }
   }
 
   keys(withPrefix = false) {
-    const keys = [];
+    const keys: any[] = [];
 
     // Loop through all storage keys
     Object.keys(this.storage).forEach((keyName, index) => {
@@ -56,7 +72,7 @@ class Storage {
     return keys;
   }
 
-  hasKey(key) {
+  hasKey(key: any) {
     return this.keys().indexOf(key) !== -1;
   }
 
@@ -65,4 +81,4 @@ class Storage {
   }
 }
 
-export default Storage
+export default WebStorage
