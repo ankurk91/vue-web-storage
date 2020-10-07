@@ -1,4 +1,4 @@
-import {Storage, Plugin as VueWebStorage} from '../src';
+import {WebStorage, Plugin as VueWebStorage} from '../src';
 // Lets import full build
 // @ts-ignore
 import Vue from 'vue/dist/vue.common';
@@ -24,7 +24,7 @@ describe('Vue Storage plugin', () => {
       prefix: 'vue_'
     });
 
-    expect(localVue.$localStorage).toBeInstanceOf(Storage);
+    expect(localVue.$localStorage).toBeInstanceOf(WebStorage);
     expect(localVue.$localStorage.prefix).toEqual('vue_');
   });
 
@@ -39,8 +39,8 @@ describe('Vue Storage plugin', () => {
     expect(localVue.$sessionStorage.prefix).toEqual('app_');
 
     // Both names should be registered
-    expect(localVue.$localStorage).toBeInstanceOf(Storage);
-    expect(localVue.$sessionStorage).toBeInstanceOf(Storage);
+    expect(localVue.$localStorage).toBeInstanceOf(WebStorage);
+    expect(localVue.$sessionStorage).toBeInstanceOf(WebStorage);
   });
 
 });

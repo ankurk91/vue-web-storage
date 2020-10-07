@@ -1,30 +1,29 @@
-import Storage from './storage';
+import WebStorage from './webStorage';
 import Events from './events';
+import { listenerCallback } from './interfaces';
 
-class StorageWithEvents extends Storage {
+export default class StorageWithEvents extends WebStorage {
 
   public events: Events;
 
-  constructor(prefix = 'app_', driver = 'local') {
+  constructor(prefix = 'app_', driver: 'local' | 'session' = 'local') {
     super(prefix, driver);
     this.events = new Events();
   }
 
-  on(key: any, fn: any) {
+  on(key: string, fn: listenerCallback): this {
     this.events.on(this.prefixKey(key), fn);
     return this;
   }
 
-  off(key: any, fn: any) {
+  off(key: string, fn: listenerCallback): this {
     this.events.off(this.prefixKey(key), fn);
     return this;
   }
 
-  clearEvents(key: any = null) {
+  clearEvents(key?: string): this {
     let mayBeKey = key ? this.prefixKey(key) : false;
     this.events.clear(mayBeKey);
     return this;
   }
 }
-
-export default StorageWithEvents

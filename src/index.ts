@@ -1,4 +1,4 @@
-import Storage from './storage';
+import WebStorage from './webStorage';
 import StorageWithEvents from './storageWithEvents';
 import { arrayify } from './util';
 
@@ -24,4 +24,4 @@ const Plugin = (Vue: any, options = {}) => {
 };
 
 export default Plugin;
-export { Storage, StorageWithEvents, Plugin }
+export { WebStorage, StorageWithEvents, Plugin }

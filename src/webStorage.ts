@@ -1,21 +1,18 @@
 import { parseJSON } from './util';
 
-class Storage {
+export default class WebStorage {
 
-  public prefix;
-  public storage: any;
+  public storage: Storage;
 
-  constructor(prefix = 'app_', driver = 'local') {
-    this.prefix = prefix;
-    // @ts-ignore
-    this.storage = window[`${String(driver)}Storage`];
+  constructor(public prefix = 'app_', driver: 'local' | 'session' = 'local') {
+    this.storage = this.storageDriver(driver);
   }
 
-  prefixKey(key: any) {
+  prefixKey(key: string): string {
     return this.prefix + String(key)
   }
 
-  set(key: any, value: any) {
+  set(key: string, value: any): boolean {
     try {
       this.storage.setItem(this.prefixKey(key), JSON.stringify(value));
       return true;
@@ -25,7 +22,7 @@ class Storage {
     }
   }
 
-  get(key: any, defaultValue = null) {
+  get<T extends any>(key: string, defaultValue: string | any = null): T {
     let storedValue: null | any = null;
     const item = this.storage.getItem(this.prefixKey(key));
     if (!!item) {
@@ -34,11 +31,11 @@ class Storage {
     return storedValue === null ? defaultValue : storedValue;
   }
 
-  remove(key: any) {
+  remove(key: string): void {
     return this.storage.removeItem(this.prefixKey(key));
   }
 
-  clear(force = false) {
+  clear(force = false): void {
     if (force) {
       this.storage.clear();
     } else {
@@ -48,7 +45,7 @@ class Storage {
     }
   }
 
-  keys(withPrefix = false) {
+  keys(withPrefix = false): string[] {
     const keys: any[] = [];
 
     // Loop through all storage keys
@@ -62,13 +59,20 @@ class Storage {
     return keys;
   }
 
-  hasKey(key: any) {
+  hasKey(key: string): boolean {
     return this.keys().indexOf(key) !== -1;
   }
 
-  length() {
+  length(): number {
     return this.keys().length;
   }
-}
 
-export default Storage
+  private storageDriver(driver: 'local' | 'session'): Storage {
+    switch (driver) {
+      case 'local':
+        return window.localStorage;
+      case 'session':
+        return window.sessionStorage;
+    }
+  }
+}

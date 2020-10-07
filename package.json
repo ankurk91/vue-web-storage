@@ -51,23 +51,6 @@
   "peerDependencies": {
     "vue": "^2.0.0"
   },
-  "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "jsx",
-      "node",
-      "vue"
-    ],
-    "setupFiles": [
-      "<rootDir>/__test__/setup.js"
-    ],
-    "transform": {
-      "^.+\\.js$": "babel-jest"
-    },
-    "testURL": "http://localhost",
-    "collectCoverage": true
-  },
   "engines": {
     "node": ">=6.9.0",
     "npm": ">=3.10.0"

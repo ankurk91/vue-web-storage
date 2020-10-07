@@ -85,12 +85,11 @@ describe('Storage events', () => {
 
     ls.clearEvents();
     mockStorageEvent('app_logged_out');
-    expect(mockFn2).not.toHaveBeenCalled();
+    expect(mockFn).not.toHaveBeenCalled();
     jest.resetAllMocks();
 
     mockStorageEvent('app_logged_in');
-    expect(mockFn).not.toHaveBeenCalled();
-    console.log(ls.events.listeners());
+    expect(mockFn2).not.toHaveBeenCalled();
     expect(ls.events.listeners()['app_logged_in']).not.toBeDefined();
 
   });
