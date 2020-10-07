@@ -120,7 +120,7 @@ Vue.$localStorage.clearEvents()
 <!-- Vue js -->
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
 <!-- Lastly add this package -->
-<script src="https://cdn.jsdelivr.net/npm/vue-web-storage@4"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-web-storage@5"></script>
 <!-- Init the plugin -->
 <script>
 Vue.use(VueWebStorage.default)

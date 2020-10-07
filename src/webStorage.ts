@@ -13,14 +13,8 @@ export default class WebStorage {
     return this.prefix + String(key)
   }
 
-  set(key: string, value: any): boolean {
-    try {
-      this.storage.setItem(this.prefixKey(key), JSON.stringify(value));
-      return true;
-    } catch (e) /*istanbul ignore next*/ {
-      console.error(e);
-      return false;
-    }
+  set(key: string, value: any): void {
+    return this.storage.setItem(this.prefixKey(key), JSON.stringify(value));
   }
 
   get<T extends any>(key: string, defaultValue: string | any = null): T {

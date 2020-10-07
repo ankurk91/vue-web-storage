@@ -4,6 +4,9 @@ import StorageWithEvents from '../src/storageWithEvents';
 const mockStorageEvent = (key: string) => {
   let event: any = new Event('storage');
   event.key = key;
+  event.newValue = +new Date();
+  event.oldValue = +new Date();
+
   window.dispatchEvent(event)
 };
 
@@ -23,6 +26,8 @@ describe('Storage events', () => {
   });
 
   test('calls registered method upon storage event', () => {
+    ls.set('logged_in', false)
+
     let mockFn = jest.fn();
     ls.on('logged_in', mockFn);
     mockStorageEvent('app_logged_in');

@@ -1,5 +1,10 @@
 # Changelog
 
+## [5.0.0](https://github.com/ankurk91/vue-web-storage/compare/4.0.2...5.0.0)
+* Convert codebase to typescript
+* Throw error when failed to parse stored value during `JSON.parse()`
+* Throw error when failed to store value in storage during `JSON.stringify()`
+
 ## [4.0.2](https://github.com/ankurk91/vue-web-storage/compare/4.0.1...4.0.2)
 * Fix issue [#13](https://github.com/ankurk91/vue-web-storage/issues/13)
 

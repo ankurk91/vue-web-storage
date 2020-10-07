@@ -9,7 +9,9 @@ export default class Events {
     window.addEventListener('storage', this.onChange, false);
   }
 
-  private onChange(event: any): void {
+  private onChange(event: StorageEvent): void {
+    if (!event.key) return;
+
     // Notice: `this` refers to `window` inside this method
     let methods = listeners[event.key];
     /*istanbul ignore else*/
