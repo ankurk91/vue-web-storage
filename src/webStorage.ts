@@ -1,11 +1,12 @@
-import { parseJSON } from './util';
+import {parseJSON} from './util';
+import {driverType} from "./interfaces";
 
 export default class WebStorage {
 
   public storage: Storage;
 
-  constructor(public prefix = 'app_', driver: 'local' | 'session' = 'local') {
-    this.storage = this.storageDriver(driver);
+  constructor(public prefix = 'app_', driver: driverType = 'local') {
+    this.storage = this.resolveDriver(driver);
   }
 
   prefixKey(key: string): string {
@@ -67,12 +68,14 @@ export default class WebStorage {
     return this.keys().length;
   }
 
-  private storageDriver(driver: 'local' | 'session'): Storage {
+  private resolveDriver(driver: driverType): Storage {
     switch (driver) {
       case 'local':
         return window.localStorage;
       case 'session':
         return window.sessionStorage;
+      default:
+        throw new Error('Unknown driver supplied')
     }
   }
 }

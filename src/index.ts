@@ -1,8 +1,9 @@
 import WebStorage from './webStorage';
 import StorageWithEvents from './storageWithEvents';
-import { arrayify } from './util';
+import {arrayify} from './util';
+import {driverType} from "./interfaces";
 
-const registerInstance = (Vue: any, driver: any, prefix: any) => {
+const registerInstance = (Vue: any, driver: driverType, prefix: string) => {
   let instance = new StorageWithEvents(prefix, driver);
   let apiName = '$' + String(driver) + 'Storage';
 
@@ -10,7 +11,7 @@ const registerInstance = (Vue: any, driver: any, prefix: any) => {
   Vue.prototype[apiName] = instance;
 };
 
-const Plugin = (Vue: any, options = {}) => {
+const Plugin = (Vue: any, options: any = {}) => {
 
   let safeOptions = Object.assign({}, {
     prefix: 'app_',
@@ -20,8 +21,7 @@ const Plugin = (Vue: any, options = {}) => {
   arrayify(safeOptions.drivers).map((driver) => {
     registerInstance(Vue, driver, safeOptions.prefix);
   });
-
 };
 
 export default Plugin;
-export { WebStorage, StorageWithEvents, Plugin }
+export {WebStorage, StorageWithEvents, Plugin}

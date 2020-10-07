@@ -1,5 +1,6 @@
 module.exports = {
-  roots: ['<rootDir>'],
+  collectCoverage: true,
+  testURL: "http://localhost",
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
   },

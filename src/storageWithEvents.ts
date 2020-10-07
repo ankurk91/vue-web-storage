@@ -1,12 +1,12 @@
 import WebStorage from './webStorage';
 import Events from './events';
-import { listenerCallback } from './interfaces';
+import {driverType, listenerCallback} from './interfaces';
 
 export default class StorageWithEvents extends WebStorage {
 
   public events: Events;
 
-  constructor(prefix = 'app_', driver: 'local' | 'session' = 'local') {
+  constructor(prefix = 'app_', driver: driverType = 'local') {
     super(prefix, driver);
     this.events = new Events();
   }

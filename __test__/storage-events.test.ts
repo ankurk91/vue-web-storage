@@ -1,7 +1,7 @@
 import StorageWithEvents from '../src/storageWithEvents';
 
 // js-dom does not support `StorageEvent`
-const mockStorageEvent = (key: any) => {
+const mockStorageEvent = (key: string) => {
   let event: any = new Event('storage');
   event.key = key;
   window.dispatchEvent(event)
@@ -9,7 +9,7 @@ const mockStorageEvent = (key: any) => {
 
 describe('Storage events', () => {
 
-  let ls: any;
+  let ls: StorageWithEvents;
 
   beforeEach(() => {
     ls = new StorageWithEvents(
@@ -74,7 +74,6 @@ describe('Storage events', () => {
     mockStorageEvent('app_logged_out');
     expect(mockFn).not.toHaveBeenCalled();
     expect(mockFn2).not.toHaveBeenCalled();
-
   });
 
   test('clear events for all keys', () => {
@@ -91,7 +90,6 @@ describe('Storage events', () => {
     mockStorageEvent('app_logged_in');
     expect(mockFn2).not.toHaveBeenCalled();
     expect(ls.events.listeners()['app_logged_in']).not.toBeDefined();
-
   });
 
 });

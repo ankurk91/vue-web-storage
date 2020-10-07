@@ -1,5 +1,4 @@
 import WebStorage from '../src/webStorage';
-import { listeners } from '../src/interfaces';
 
 describe('Storage class', () => {
 

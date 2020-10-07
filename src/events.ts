@@ -1,15 +1,15 @@
-import { parseJSON } from './util';
-import { listenerCallback, listeners } from './interfaces';
+import {parseJSON} from './util';
+import {listenerCallback, listeners} from './interfaces';
 
 let listeners: listeners = {};
 
-class Events {
+export default class Events {
 
   constructor() {
-    window.addEventListener('storage', this._onChange, false);
+    window.addEventListener('storage', this.onChange, false);
   }
 
-  _onChange(event: any): void {
+  private onChange(event: any): void {
     // Notice: `this` refers to `window` inside this method
     let methods = listeners[event.key];
     /*istanbul ignore else*/
@@ -17,7 +17,7 @@ class Events {
       let newValue = parseJSON(event.newValue);
       let oldValue = parseJSON(event.oldValue);
 
-      methods.map((method: any) => {
+      methods.map((method: (...args: any) => void) => {
         method.call(this, newValue, oldValue, event.url);
       });
     }
@@ -53,4 +53,3 @@ class Events {
   }
 }
 
-export default Events;

@@ -6,7 +6,7 @@
 [![license](https://badgen.net/github/license/ankurk91/vue-web-storage)](https://yarnpkg.com/en/package/vue-web-storage)
 [![tests](https://github.com/ankurk91/vue-web-storage/workflows/tests/badge.svg)](https://github.com/ankurk91/vue-web-storage/actions)
 [![codecov](https://codecov.io/gh/ankurk91/vue-web-storage/branch/master/graph/badge.svg)](https://codecov.io/gh/ankurk91/vue-web-storage)
-![ts](https://badgen.net/badge/ready/TypeScript/blue)
+![ts](https://badgen.net/badge/Built%20With/TypeScript/blue)
 
 A minimalistic Vue.js plugin for web storage
 
