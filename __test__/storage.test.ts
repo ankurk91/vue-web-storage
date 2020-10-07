@@ -131,4 +131,11 @@ describe('Storage class', () => {
     expect(value).toEqual(null);
   });
 
+
+  test('it throw error for unknown driver type', () => {
+    expect(() => {
+      // @ts-ignore
+      new WebStorage('app_', 'alien');
+    }).toThrowError(/Unknown driver/);
+  });
 });
