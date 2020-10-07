@@ -1,7 +1,7 @@
 import {parseJSON} from './util';
-import {listenerCallback, listeners} from './interfaces';
+import {listenerCallback, listenersPool} from './interfaces';
 
-let listeners: listeners = {};
+let listeners: listenersPool = {};
 
 export default class Events {
 
@@ -48,7 +48,7 @@ export default class Events {
     }
   }
 
-  listeners(): listeners {
+  listeners(): listenersPool {
     return listeners;
   }
 }
