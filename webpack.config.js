@@ -15,9 +15,9 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.runtime.esm.js'
     },
-    extensions: ['.js', '.json', '.vue']
+    extensions: ['.js', '.json', '.vue', '.tsx', '.ts']
   },
-  entry: './src/index.js',
+  entry: './src/index.ts',
   externals: {
     'vue': {
       commonjs: 'vue',
@@ -28,7 +28,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'vue-web-storage.min.js',
+    filename: 'index.umd.min.js',
     library: 'VueWebStorage',
     libraryTarget: 'umd',
     umdNamedDefine: true,
@@ -39,10 +39,15 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-      },
+        test: /\.tsx?$/,
+        loader: require.resolve('ts-loader'),
+        options: {
+          transpileOnly: false,
+          experimentalWatchApi: true,
+          appendTsSuffixTo: [/\.vue$/]
+        },
+        exclude: /node_modules/
+      }
     ]
   },
   optimization: {
