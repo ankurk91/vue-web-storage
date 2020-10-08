@@ -28,17 +28,17 @@ npm install vue-web-storage
 ## Usage
 ```js
 import Vue from 'vue';
-import Storage from 'vue-web-storage';  
-Vue.use(Storage); 
+import StoragePlugin from 'vue-web-storage';  
+Vue.use(StoragePlugin); 
 // Use as
 // Vue.$localStorage
 ```
 
 ## Configuration (optional)
 ```js
-Vue.use(Storage, {
+Vue.use(StoragePlugin, {
   prefix: 'your_app_slug_',// default `app_`
-  drivers: ['session','local'], // default 'local'
+  drivers: ['session', 'local'], // default 'local'
 });
 
 // This will register two instances
@@ -47,11 +47,11 @@ Vue.use(Storage, {
 ```
 
 ### Methods
-All methods take care of `prefix` in key name, so you no need to specify key prefix when using them.
+All methods take care of `prefix` in key name, so you no need to specify the prefix when using them.
 
 #### `set(key,value)`
 Stores the `value` under specified `key` in storage. Convert value to JSON before saving.
-Returns `true` on success and `false` on errors.
+This method throws error on failure.
 ```js
 Vue.$localStorage.set('name', 'john')
 Vue.$localStorage.set('isAdmin', true)
@@ -60,7 +60,7 @@ Vue.$localStorage.set('permission', {id: 2, slug: 'edit_post'})
 ```
 #### `get(key, ?defaultValue = null)`
 Retrieves given `key` value from storage, parse the value from JSON before returning.
-If parsing failed then returns the actual value get from storage.
+If parsing failed then throws error.
 ```js
 Vue.$localStorage.get('name')
 Vue.$localStorage.get('doesNotExistsInStorage','defaultValue')
@@ -97,7 +97,7 @@ Vue.$localStorage.length()
 #### `on(key,fn)`
 Attaches a listener method to the given key. You can attach multiple methods on the same key.
 ```js
-const onChangeName = (newValue, OldValue, url) => {
+const onChangeName = (newValue, OldValue, originUrl) => {
   // do something when `name` value gets changed
 };
 Vue.$localStorage.on('name', onChangeName);

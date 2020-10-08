@@ -18,7 +18,7 @@ export interface PluginOptions {
   drivers?: driverType[]
 }
 
-const Plugin = (Vue: any, options: PluginOptions = {}) => {
+const Plugin: PluginFunction<PluginOptions> = (Vue: any, options: PluginOptions = {}) => {
 
   let safeOptions = Object.assign({}, {
     prefix: 'app_',

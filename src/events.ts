@@ -10,6 +10,7 @@ export default class Events {
   }
 
   private onChange(event: StorageEvent): void {
+    // According to specs the key can be `null`
     if (!event.key) return;
 
     // Notice: `this` refers to `window` inside this method

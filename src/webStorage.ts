@@ -3,9 +3,9 @@ import {driverType} from "./interfaces";
 
 export default class WebStorage {
 
-  public storage: Storage;
+  public readonly storage: Storage;
 
-  constructor(public prefix = 'app_', driver: driverType = 'local') {
+  constructor(public readonly prefix = 'app_', driver: driverType = 'local') {
     this.storage = this.resolveDriver(driver);
   }
 
@@ -69,7 +69,7 @@ export default class WebStorage {
       case 'session':
         return window.sessionStorage;
       default:
-        throw new Error('Unknown driver supplied')
+        throw new Error(`Unknown driver supplied: ${driver}`)
     }
   }
 }

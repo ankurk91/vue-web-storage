@@ -4,7 +4,7 @@ import {driverType, listenerCallback} from './interfaces';
 
 export default class StorageWithEvents extends WebStorage {
 
-  public events: Events;
+  public readonly events: Events;
 
   constructor(prefix = 'app_', driver: driverType = 'local') {
     super(prefix, driver);
