@@ -3,8 +3,6 @@ import {WebStorage, Plugin as VueWebStorage} from '../src';
 // @ts-ignore
 import Vue from 'vue/dist/vue.common';
 
-Vue.config.productionTip = false;
-
 describe('Vue Storage plugin', () => {
 
   test('no arguments', () => {

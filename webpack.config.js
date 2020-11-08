@@ -3,7 +3,6 @@
 const webpack = require('webpack');
 const path = require('path');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
-const UnminifiedWebpackPlugin = require('unminified-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
@@ -17,7 +16,10 @@ module.exports = {
     },
     extensions: ['.js', '.json', '.vue', '.tsx', '.ts']
   },
-  entry: './src/index.ts',
+  entry: {
+    'index.umd': './src/index.ts',
+    'index.umd.min': './src/index.ts',
+  },
   externals: {
     'vue': {
       commonjs: 'vue',
@@ -28,13 +30,11 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'index.umd.min.js',
+    filename: '[name].js',
     library: 'VueWebStorage',
     libraryTarget: 'umd',
     umdNamedDefine: true,
-    // Workaround to fix umd build, restore webpack v3 behaviour
-    // https://github.com/webpack/webpack/issues/6642
-    globalObject: "typeof self !== 'undefined' ? self : this"
+    pathinfo: false
   },
   module: {
     rules: [
@@ -51,15 +51,17 @@ module.exports = {
     ]
   },
   optimization: {
+    minimize: true,
     minimizer: [
       new TerserPlugin({
-        sourceMap: false,
+        include: /\.min\.js$/,
+        extractComments: false,
         terserOptions: {
           output: {
-            beautify: false
+            comments: false,
           },
           compress: {
-            drop_console: true
+            drop_console: true,
           }
         }
       }),
@@ -67,7 +69,6 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new UnminifiedWebpackPlugin(),
   ],
   devtool: false,
   performance: {

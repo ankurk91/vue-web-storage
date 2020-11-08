@@ -24,4 +24,4 @@ Vue.use(Storage, {
 ```
 * All API methods now available on `$localStorage` or `$sessionStorage` based on drivers specified in configs.
 * In order to preserve old behaviour you have to rename all occurrences of `Vue.$storage` with appropriate name.
-* All methods name and their behaviour remains same.
+* All methods name, and their behaviour remains same.
