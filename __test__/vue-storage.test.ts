@@ -1,44 +1,71 @@
-import {WebStorage, Plugin as VueWebStorage} from '../src';
-// Lets import full build
-// @ts-ignore
-import Vue from 'vue/dist/vue.common';
+import VueWebStoragePlugin, {WebStorage} from '../src';
+import {createApp} from 'vue';
 
 describe('Vue Storage plugin', () => {
 
-  test('no arguments', () => {
-    let localVue = Vue.extend();
-    localVue.use(VueWebStorage);
+  test('without any arguments', (done) => {
+    const wrapper = createApp({
+      render() {
+        return null
+      },
+      created() {
+        const app = this;
+        expect(app.$localStorage.prefix).toEqual('app_');
+        expect(app.$localStorage.set).toBeDefined();
+        expect(app.$localStorage.get).toBeDefined();
+        expect(app.$localStorage.on).toBeDefined();
+        expect(app.$localStorage.off).toBeDefined();
 
-    expect(localVue.$localStorage.prefix).toEqual('app_');
-    expect(localVue.$localStorage.set).toBeDefined();
-    expect(localVue.$localStorage.get).toBeDefined();
-    expect(localVue.$localStorage.on).toBeDefined();
-    expect(localVue.$localStorage.off).toBeDefined();
+        done()
+      }
+    });
+    wrapper.use(VueWebStoragePlugin);
+    wrapper.mount('body')
   });
 
-  test('custom prefix with default driver', () => {
-    let localVue = Vue.extend();
-    localVue.use(VueWebStorage, {
+  test('custom prefix with default driver', (done) => {
+    const wrapper = createApp({
+      render() {
+        return null
+      },
+      created() {
+        const app = this;
+
+        expect(app.$localStorage).toBeInstanceOf(WebStorage);
+        expect(app.$localStorage.prefix).toEqual('vue_');
+        done()
+      }
+    });
+    wrapper.use(VueWebStoragePlugin, {
       prefix: 'vue_'
     });
-
-    expect(localVue.$localStorage).toBeInstanceOf(WebStorage);
-    expect(localVue.$localStorage.prefix).toEqual('vue_');
+    wrapper.mount('body')
   });
 
-  test('multiple drivers', () => {
-    let localVue = Vue.extend();
-    localVue.use(VueWebStorage, {
-      drivers: ['local', 'session'],
+  test('multiple drivers', (done) => {
+
+    const wrapper = createApp({
+      render() {
+        return null
+      },
+      created() {
+        const app = this;
+
+        // Prefix will be same for both
+        expect(app.$localStorage.prefix).toEqual('app_');
+        expect(app.$sessionStorage.prefix).toEqual('app_');
+
+        // Both names should be registered
+        expect(app.$localStorage).toBeInstanceOf(WebStorage);
+        expect(app.$sessionStorage).toBeInstanceOf(WebStorage);
+        done()
+      }
     });
 
-    // Prefix will be same for both
-    expect(localVue.$localStorage.prefix).toEqual('app_');
-    expect(localVue.$sessionStorage.prefix).toEqual('app_');
-
-    // Both names should be registered
-    expect(localVue.$localStorage).toBeInstanceOf(WebStorage);
-    expect(localVue.$sessionStorage).toBeInstanceOf(WebStorage);
+    wrapper.use(VueWebStoragePlugin, {
+      drivers: ['local', 'session']
+    });
+    wrapper.mount('body')
   });
 
 });
