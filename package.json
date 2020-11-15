@@ -1,6 +1,6 @@
 {
   "name": "vue-web-storage",
-  "version": "5.0.1",
+  "version": "6.0.0",
   "description": "Vue.js plugin for localStorage and sessionStorage",
   "main": "dist/index.umd.js",
   "module": "dist/esm/index.js",
