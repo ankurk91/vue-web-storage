@@ -10,6 +10,12 @@
 
 A minimalistic Vue.js plugin for web storage
 
+### Version matrix
+| Vue.js version | Package version | Branch          |
+| :---           | :---:           | ---:           | 
+| 2.x            | 5.x             | [5.x](https://github.com/ankurk91/vue-web-storage/tree/v5.x) |
+| 3.x            | 6.x             | master          |
+
 ## Features
 * Choose either `localStorage` or `sessionStorage` or both
 * Prefix all of your stored keys
@@ -27,23 +33,24 @@ npm install vue-web-storage
 
 ## Usage
 ```js
-import Vue from 'vue';
+import {createApp} from 'vue';
 import StoragePlugin from 'vue-web-storage';  
-Vue.use(StoragePlugin); 
+const app = createApp({}).mount('#app')
+app.use(StoragePlugin); 
 // Use as
-// Vue.$localStorage
+// this.$localStorage
 ```
 
 ## Configuration (optional)
 ```js
-Vue.use(StoragePlugin, {
+app.use(StoragePlugin, {
   prefix: 'your_app_slug_',// default `app_`
   drivers: ['session', 'local'], // default 'local'
 });
 
 // This will register two instances
-// Vue.$sessionStorage
-// Vue.$localStorage
+// this.$sessionStorage
+// this.$localStorage
 ```
 
 ### Methods
@@ -53,42 +60,42 @@ All methods take care of `prefix` in key name, so you no need to specify the pre
 Stores the `value` under specified `key` in storage. Convert value to JSON before saving.
 This method throws error on failure.
 ```js
-Vue.$localStorage.set('name', 'john')
-Vue.$localStorage.set('isAdmin', true)
-Vue.$localStorage.set('roles', ['admin', 'sub-admin'])
-Vue.$localStorage.set('permission', {id: 2, slug: 'edit_post'})
+this.$localStorage.set('name', 'john')
+this.$localStorage.set('isAdmin', true)
+this.$localStorage.set('roles', ['admin', 'sub-admin'])
+this.$localStorage.set('permission', {id: 2, slug: 'edit_post'})
 ```
 #### `get(key, ?defaultValue = null)`
 Retrieves given `key` value from storage, parse the value from JSON before returning.
 If parsing failed then throws error.
 ```js
-Vue.$localStorage.get('name')
-Vue.$localStorage.get('doesNotExistsInStorage','defaultValue')
+this.$localStorage.get('name')
+this.$localStorage.get('doesNotExistsInStorage','defaultValue')
 ```
 #### `remove(key)`
 Removes the `key` from storage. 
 ```js
-Vue.$localStorage.remove('name')
+this.$localStorage.remove('name')
 ```
 #### `clear(?force = false)`
 Removes all keys from storage. Passing `true` will clear whole storage without taking `prefix` into consideration.
 ```js
-Vue.$localStorage.clear()
+this.$localStorage.clear()
 ```
 #### `keys(?withPrefix = false)`
 Returns array of keys stored in storage. Passing `true` will return prefixed key names.
 ```js
-Vue.$localStorage.keys()
+this.$localStorage.keys()
 ```
 #### `hasKey(key)`
 Returns `true` if key exists in storage regardless of its value.
 ```js
-Vue.$localStorage.hasKey('name')
+this.$localStorage.hasKey('name')
 ```
 #### `length()`
 Returns the number of keys stored in storage.
 ```js
-Vue.$localStorage.length()
+this.$localStorage.length()
 ```
 
 ### Events
@@ -100,30 +107,30 @@ Attaches a listener method to the given key. You can attach multiple methods on 
 const onChangeName = (newValue, OldValue, originUrl) => {
   // do something when `name` value gets changed
 };
-Vue.$localStorage.on('name', onChangeName);
-Vue.$localStorage.on('name', this.anotherMethod)
+this.$localStorage.on('name', onChangeName);
+this.$localStorage.on('name', this.anotherMethod)
 ```
 #### `off(key,fn)`
 Removes specified listener method form the given key.
 ```js
-Vue.$localStorage.off('name', this.onChangeName)
+this.$localStorage.off('name', this.onChangeName)
 ```
 #### `clearEvents(?key)`
 * Removes all listeners for the given key otherwise clears the listeners pool when key not specified.
 ```js
-Vue.$localStorage.clearEvents('name');
-Vue.$localStorage.clearEvents()
+this.$localStorage.clearEvents('name');
+this.$localStorage.clearEvents()
 ```
 
 ## Install in non-module environments (without webpack)
 ```html
 <!-- Vue js -->
-<script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
 <!-- Lastly add this package -->
-<script src="https://cdn.jsdelivr.net/npm/vue-web-storage@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-web-storage@6"></script>
 <!-- Init the plugin -->
 <script>
-Vue.use(VueWebStorage.default)
+yourApp.use(VueWebStorage.default)
 </script>
 ```
 

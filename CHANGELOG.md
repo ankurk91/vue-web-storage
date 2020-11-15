@@ -1,5 +1,8 @@
 # Changelog
 
+## [6.0.0](https://github.com/ankurk91/vue-web-storage/compare/5.0.0...6.0.0)
+* Drop support for Vue 2.x and add support for Vue 3.x
+
 ## [5.0.0](https://github.com/ankurk91/vue-web-storage/compare/4.0.2...5.0.0)
 * Convert codebase to typescript
 * Throw error when failed to parse stored value during `JSON.parse()`
