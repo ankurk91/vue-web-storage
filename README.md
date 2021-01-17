@@ -48,7 +48,7 @@ app.use(StoragePlugin, {
   drivers: ['session', 'local'], // default 'local'
 });
 
-// This will register two instances
+// It will register two different instances
 // this.$sessionStorage
 // this.$localStorage
 ```
@@ -73,7 +73,7 @@ this.$localStorage.get('name')
 this.$localStorage.get('doesNotExistsInStorage','defaultValue')
 ```
 #### `remove(key)`
-Removes the `key` from storage. 
+Removes the individual `key` from storage. 
 ```js
 this.$localStorage.remove('name')
 ```

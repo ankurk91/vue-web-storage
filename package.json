@@ -1,6 +1,6 @@
 {
   "name": "vue-web-storage",
-  "version": "6.0.0",
+  "version": "6.1.0",
   "description": "Vue.js plugin for localStorage and sessionStorage",
   "main": "dist/index.umd.js",
   "module": "dist/esm/index.js",
@@ -29,7 +29,7 @@
     "test": "jest",
     "test:watch": "yarn run test --watch --notify",
     "build:esm": "tsc -m es6 --outDir ./dist/esm",
-    "build:umd": "cross-env NODE_ENV=production webpack --mode production",
+    "build:umd": "cross-env NODE_ENV=production webpack --mode=production",
     "build": "npm run build:umd && npm run build:esm",
     "prepublishOnly": "yarn run test && yarn run build"
   },
