@@ -1,6 +1,6 @@
 # Changelog
 
-## [6.0.0](https://github.com/ankurk91/vue-web-storage/compare/6.0.0...6.1.0)
+## [6.1.0](https://github.com/ankurk91/vue-web-storage/compare/6.0.0...6.1.0)
 * Add: `Provide / inject` feature when using the Composition API
 
 ## [6.0.0](https://github.com/ankurk91/vue-web-storage/compare/5.0.0...6.0.0)

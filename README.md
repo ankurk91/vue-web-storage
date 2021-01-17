@@ -1,6 +1,6 @@
 # Vue Web Storage
 
-[![downloads](https://badgen.net/npm/dt/vue-web-storage)](http://npm-stats.com/~packages/vue-web-storage)
+[![downloads](https://badgen.net/npm/dt/vue-web-storage)](https://npm-stat.com/charts.html?package=vue-web-storage&from=2017-12-01)
 [![npm-version](https://badgen.net/npm/v/vue-web-storage)](https://www.npmjs.com/package/vue-web-storage)
 [![github-tag](https://badgen.net/github/tag/ankurk91/vue-web-storage)](https://github.com/ankurk91/vue-web-storage/)
 [![license](https://badgen.net/github/license/ankurk91/vue-web-storage)](https://yarnpkg.com/en/package/vue-web-storage)
