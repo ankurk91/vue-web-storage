@@ -8,6 +8,7 @@ const registerInstance = (app: App, driver: driverType, prefix: string) => {
   const apiName = '$' + String(driver) + 'Storage';
 
   app.config.globalProperties[apiName] = instance;
+  app.provide(apiName, instance);
 };
 
 export interface PluginOptions {
