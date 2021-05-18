@@ -146,6 +146,7 @@ describe('Storage class', () => {
 
     ws.set(key, value, expire);
     expect(ws.get(key)).toBe(null)
+    expect(ws.hasKey(key)).toBe(false);
   });
 
 
