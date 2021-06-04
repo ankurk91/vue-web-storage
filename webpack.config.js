@@ -33,6 +33,7 @@ module.exports = {
     filename: '[name].js',
     library: 'VueWebStorage',
     libraryTarget: 'umd',
+    globalObject: 'this',
     umdNamedDefine: true,
     pathinfo: false
   },
