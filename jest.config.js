@@ -1,4 +1,5 @@
 module.exports = {
+  testEnvironment: 'jsdom',
   collectCoverage: true,
   testURL: "http://localhost",
   transform: {
