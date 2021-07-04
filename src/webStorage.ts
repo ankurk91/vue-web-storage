@@ -13,8 +13,12 @@ export default class WebStorage {
     return this.prefix + String(key)
   }
 
-  set(key: string, value: any): void {
-    return this.storage.setItem(this.prefixKey(key), JSON.stringify(value));
+  set(key: string, value: any, expire = 0): void {
+    const storedValue = {
+      value,
+      expire: expire === 0 ? 0 : (new Date().getTime() + expire)
+    }
+    return this.storage.setItem(this.prefixKey(key), JSON.stringify(storedValue));
   }
 
   get<T extends any>(key: string, defaultValue: string | any = null): T {
@@ -23,7 +27,18 @@ export default class WebStorage {
     if (!!item) {
       storedValue = parseJSON(item);
     }
-    return storedValue === null ? defaultValue : storedValue;
+
+    if (storedValue===null){
+      return defaultValue
+    }
+
+    if (storedValue.expire === 0 || storedValue.expire >= new Date().getTime()){
+      return storedValue.value
+    }
+
+    this.remove(key)
+
+    return defaultValue
   }
 
   remove(key: string): void {

@@ -130,6 +130,25 @@ describe('Storage class', () => {
     expect(value).toEqual(null);
   });
 
+  test('can store value that not expired', () => {
+    let key = 'name';
+    let value = 'john';
+    let expire = 3600000
+
+    ws.set(key, value, expire);
+    expect(ws.get(key)).toBe(value)
+  });
+
+  test('can store value that expired', () => {
+    let key = 'name';
+    let value = 'john';
+    let expire = -3600000
+
+    ws.set(key, value, expire);
+    expect(ws.get(key)).toBe(null)
+    expect(ws.hasKey(key)).toBe(false);
+  });
+
 
   test('it throw error for unknown driver type', () => {
     expect(() => {
