@@ -8,7 +8,7 @@
 [![codecov](https://codecov.io/gh/ankurk91/vue-web-storage/branch/master/graph/badge.svg)](https://codecov.io/gh/ankurk91/vue-web-storage)
 ![ts](https://badgen.net/badge/Built%20With/TypeScript/blue)
 
-A minimalistic Vue.js plugin for web storage
+A minimalistic Vue.js 2.x plugin for web storage
 
 ## Features
 * Choose either `localStorage` or `sessionStorage` or both
@@ -19,10 +19,10 @@ A minimalistic Vue.js plugin for web storage
 ## Installation
 ```bash
 # yarn
-yarn add vue-web-storage
+yarn add vue-web-storage@^5
 
 # npm
-npm install vue-web-storage
+npm install vue-web-storage@^5
 ```
 
 ## Usage
